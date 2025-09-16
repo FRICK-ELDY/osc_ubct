@@ -24,5 +24,11 @@ flutter run -d windows
 
 ## Rust プラグイン
 ```
+cd example
 flutter_rust_bridge_codegen integrate
+flutter_rust_bridge_codegen generate --watch
+```
+動作確認
+```
+flutter run -d windows
 ```
