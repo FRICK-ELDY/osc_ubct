@@ -32,3 +32,12 @@ flutter_rust_bridge_codegen generate --watch
 ```
 flutter run -d windows
 ```
+
+## ビルド手順
+```
+cd example
+flutter clean
+flutter_rust_bridge_codegen generate
+flutter pub get
+flutter run -d windows
+```
