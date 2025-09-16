@@ -6,7 +6,10 @@
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `fmt`, `fmt`
+// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `fmt`, `fmt`, `fmt`
+
+Future<List<CameraInfo>> cameraList() =>
+    RustLib.instance.api.crateApiCameraCameraList();
 
 Future<Camera> cameraOpen({
   required int index,
@@ -28,6 +31,24 @@ Future<Frame> cameraGrabJpeg({required Camera cam, required int quality}) =>
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Camera>>
 abstract class Camera implements RustOpaqueInterface {}
+
+class CameraInfo {
+  final String label;
+  final int idx;
+
+  const CameraInfo({required this.label, required this.idx});
+
+  @override
+  int get hashCode => label.hashCode ^ idx.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is CameraInfo &&
+          runtimeType == other.runtimeType &&
+          label == other.label &&
+          idx == other.idx;
+}
 
 class Frame {
   final Uint8List jpeg;
