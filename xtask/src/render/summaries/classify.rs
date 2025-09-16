@@ -7,12 +7,8 @@ use super::model::Section;
 pub fn classify_section(rel: &str) -> Option<Section> {
     if rel.starts_with("example/lib/") {
         Some(Section::Dart)
-    } else if rel.starts_with("example/rust/src/camera") {
-        Some(Section::Camera)
-    } else if rel.starts_with("example/rust/src/tracking") {
-        Some(Section::Tracking)
-    } else if rel.starts_with("example/rust/src/osc") {
-        Some(Section::Osc)
+    } else if rel.starts_with("example/rust") {
+        Some(Section::Rust)
     } else {
         None
     }

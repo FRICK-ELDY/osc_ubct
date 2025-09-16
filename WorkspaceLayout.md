@@ -1,6 +1,6 @@
 # Workspace Layout
 
-- Generated: 2025-09-16 22:42:05
+- Generated: 2025-09-16 23:57:59
 - Root: `D:\Work\FRICK-ELDY\osc_ubct`
 - Max Depth: none
 - Excludes: `.dart_tool, .git, .github, .gitignore, .idea, .metadata, .vscode, CHANGELOG.md, LICENSE, README.md, WorkspaceLayout.md, analysis_options.yaml, android, assets, bin, build, dev-log.md, dist, docs, ios, linux, macos, node_modules, out, pubspec.lock, pubspec.yaml, rust_builder, target, test, windows, xtask`
@@ -17,32 +17,26 @@
 ### Dart - Flutter UI
 | Path | Lines | Status | Summary |
 |------|------:|:------:|---------|
-| [example/lib/main.dart](https://github.com/FRICK-ELDY/rust-3d/blob/main/example/lib/main.dart) | 93 | 🟡 | (no summary) |
-| [example/lib/src/rust/api/simple.dart](https://github.com/FRICK-ELDY/rust-3d/blob/main/example/lib/src/rust/api/simple.dart) | 10 | 🟢 | (no summary) |
-| [example/lib/src/rust/frb_generated.dart](https://github.com/FRICK-ELDY/rust-3d/blob/main/example/lib/src/rust/frb_generated.dart) | 242 | 🔴 | (no summary) |
-| [example/lib/src/rust/frb_generated.io.dart](https://github.com/FRICK-ELDY/rust-3d/blob/main/example/lib/src/rust/frb_generated.io.dart) | 86 | 🟡 | (no summary) |
-| [example/lib/src/rust/frb_generated.web.dart](https://github.com/FRICK-ELDY/rust-3d/blob/main/example/lib/src/rust/frb_generated.web.dart) | 86 | 🟡 | (no summary) |
+| [example/lib/main.dart](https://github.com/FRICK-ELDY/rust-3d/blob/main/example/lib/main.dart) | 17 | 🟢 | (no summary) |
+| [example/lib/src/rust/api/camera.dart](https://github.com/FRICK-ELDY/rust-3d/blob/main/example/lib/src/rust/api/camera.dart) | 50 | 🟢 | (no summary) |
+| [example/lib/src/rust/api/osc.dart](https://github.com/FRICK-ELDY/rust-3d/blob/main/example/lib/src/rust/api/osc.dart) | 25 | 🟢 | (no summary) |
+| [example/lib/src/rust/api/tracking.dart](https://github.com/FRICK-ELDY/rust-3d/blob/main/example/lib/src/rust/api/tracking.dart) | 18 | 🟢 | (no summary) |
+| [example/lib/src/rust/frb_generated.dart](https://github.com/FRICK-ELDY/rust-3d/blob/main/example/lib/src/rust/frb_generated.dart) | 977 | 🔴 | (no summary) |
+| [example/lib/src/rust/frb_generated.io.dart](https://github.com/FRICK-ELDY/rust-3d/blob/main/example/lib/src/rust/frb_generated.io.dart) | 433 | 🔴 | (no summary) |
+| [example/lib/src/rust/frb_generated.web.dart](https://github.com/FRICK-ELDY/rust-3d/blob/main/example/lib/src/rust/frb_generated.web.dart) | 409 | 🔴 | (no summary) |
+| [example/lib/ui/ubct_preview.dart](https://github.com/FRICK-ELDY/rust-3d/blob/main/example/lib/ui/ubct_preview.dart) | 105 | 🟠 | (no summary) |
 
 ---
 
-### Rust - Camera API
+### Rust - Camera,Tracking,Osc API 
 | Path | Lines | Status | Summary |
 |------|------:|:------:|---------|
-| _no files_ | 0 | - | - |
-
----
-
-### Rust - Tracking API
-| Path | Lines | Status | Summary |
-|------|------:|:------:|---------|
-| _no files_ | 0 | - | - |
-
----
-
-### Rust - Osc API
-| Path | Lines | Status | Summary |
-|------|------:|:------:|---------|
-| _no files_ | 0 | - | - |
+| [example/rust/src/api/camera.rs](https://github.com/FRICK-ELDY/rust-3d/blob/main/example/rust/src/api/camera.rs) | 39 | 🟢 | (no summary) |
+| [example/rust/src/api/mod.rs](https://github.com/FRICK-ELDY/rust-3d/blob/main/example/rust/src/api/mod.rs) | 6 | 🟢 | apiモジュールの集約 |
+| [example/rust/src/api/osc.rs](https://github.com/FRICK-ELDY/rust-3d/blob/main/example/rust/src/api/osc.rs) | 26 | 🟢 | (no summary) |
+| [example/rust/src/api/tracking.rs](https://github.com/FRICK-ELDY/rust-3d/blob/main/example/rust/src/api/tracking.rs) | 22 | 🟢 | (no summary) |
+| [example/rust/src/frb_generated.rs](https://github.com/FRICK-ELDY/rust-3d/blob/main/example/rust/src/frb_generated.rs) | 848 | 🔴 | (no summary) |
+| [example/rust/src/lib.rs](https://github.com/FRICK-ELDY/rust-3d/blob/main/example/rust/src/lib.rs) | 8 | 🟢 | FRB v2用 lib.rs（余計なimportを排除） |
 
 ## Directory / File Tree
 
@@ -55,22 +49,28 @@ root/
 │  │  └─ simple_test.dart
 │  ├─ lib/
 │  │  ├─ main.dart
-│  │  └─ src/
-│  │     └─ rust/
-│  │        ├─ api/
-│  │        │  └─ simple.dart
-│  │        ├─ frb_generated.dart
-│  │        ├─ frb_generated.io.dart
-│  │        └─ frb_generated.web.dart
+│  │  ├─ src/
+│  │  │  └─ rust/
+│  │  │     ├─ api/
+│  │  │     │  ├─ camera.dart
+│  │  │     │  ├─ osc.dart
+│  │  │     │  └─ tracking.dart
+│  │  │     ├─ frb_generated.dart
+│  │  │     ├─ frb_generated.io.dart
+│  │  │     └─ frb_generated.web.dart
+│  │  └─ ui/
+│  │     └─ ubct_preview.dart
 │  ├─ rust/
 │  │  ├─ Cargo.lock
 │  │  ├─ Cargo.toml
 │  │  └─ src/
 │  │     ├─ api/
-│  │     │  ├─ mod.rs
-│  │     │  └─ simple.rs
+│  │     │  ├─ camera.rs
+│  │     │  ├─ mod.rs — apiモジュールの集約
+│  │     │  ├─ osc.rs
+│  │     │  └─ tracking.rs
 │  │     ├─ frb_generated.rs
-│  │     └─ lib.rs
+│  │     └─ lib.rs — FRB v2用 lib.rs（余計なimportを排除）
 │  └─ test_driver/
 │     └─ integration_test.dart
 └─ lib/
