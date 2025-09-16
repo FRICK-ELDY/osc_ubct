@@ -1,6 +1,6 @@
 # Workspace Layout
 
-- Generated: 2025-09-17 01:08:35
+- Generated: 2025-09-17 01:21:01
 - Root: `D:\Work\FRICK-ELDY\osc_ubct`
 - Max Depth: none
 - Excludes: `.dart_tool, .git, .github, .gitignore, .idea, .metadata, .vscode, CHANGELOG.md, LICENSE, README.md, WorkspaceLayout.md, analysis_options.yaml, android, assets, bin, build, dev-log.md, dist, docs, ios, linux, macos, node_modules, out, pubspec.lock, pubspec.yaml, rust_builder, target, test, windows, xtask`
@@ -22,13 +22,13 @@
 | [example/lib/main.dart](https://github.com/FRICK-ELDY/rust-3d/blob/main/example/lib/main.dart) | 49 | 🟢 | デスクトップで 9:19.5 の縦長ウィンドウに整える（window_manager 版） |
 | [example/lib/models/euler.dart](https://github.com/FRICK-ELDY/rust-3d/blob/main/example/lib/models/euler.dart) | 7 | 🟢 | Euler角のシンプルなデータクラス |
 | [example/lib/services/runtime/osc_runtime.dart](https://github.com/FRICK-ELDY/rust-3d/blob/main/example/lib/services/runtime/osc_runtime.dart) | 37 | 🟢 | FRBを使ったシンプルOSCランタイム。UIからの設定はここに集約、送信はCameraのtickから呼ぶ |
-| [example/lib/src/rust/api/camera.dart](https://github.com/FRICK-ELDY/rust-3d/blob/main/example/lib/src/rust/api/camera.dart) | 50 | 🟢 | (no summary) |
+| [example/lib/src/rust/api/camera.dart](https://github.com/FRICK-ELDY/rust-3d/blob/main/example/lib/src/rust/api/camera.dart) | 71 | 🟡 | (no summary) |
 | [example/lib/src/rust/api/osc.dart](https://github.com/FRICK-ELDY/rust-3d/blob/main/example/lib/src/rust/api/osc.dart) | 25 | 🟢 | (no summary) |
-| [example/lib/src/rust/api/tracking.dart](https://github.com/FRICK-ELDY/rust-3d/blob/main/example/lib/src/rust/api/tracking.dart) | 18 | 🟢 | (no summary) |
-| [example/lib/src/rust/frb_generated.dart](https://github.com/FRICK-ELDY/rust-3d/blob/main/example/lib/src/rust/frb_generated.dart) | 977 | 🔴 | (no summary) |
-| [example/lib/src/rust/frb_generated.io.dart](https://github.com/FRICK-ELDY/rust-3d/blob/main/example/lib/src/rust/frb_generated.io.dart) | 433 | 🔴 | (no summary) |
-| [example/lib/src/rust/frb_generated.web.dart](https://github.com/FRICK-ELDY/rust-3d/blob/main/example/lib/src/rust/frb_generated.web.dart) | 409 | 🔴 | (no summary) |
-| [example/lib/ui/features/camera/camera_actions.dart](https://github.com/FRICK-ELDY/rust-3d/blob/main/example/lib/ui/features/camera/camera_actions.dart) | 218 | 🔴 | FRBに合わせたCamera制御。JPG取得→ui.Image化、JSON→Euler反映、OSC送信はOscRuntimeへ |
+| [example/lib/src/rust/api/tracking.dart](https://github.com/FRICK-ELDY/rust-3d/blob/main/example/lib/src/rust/api/tracking.dart) | 31 | 🟢 | (no summary) |
+| [example/lib/src/rust/frb_generated.dart](https://github.com/FRICK-ELDY/rust-3d/blob/main/example/lib/src/rust/frb_generated.dart) | 1159 | 🔴 | (no summary) |
+| [example/lib/src/rust/frb_generated.io.dart](https://github.com/FRICK-ELDY/rust-3d/blob/main/example/lib/src/rust/frb_generated.io.dart) | 482 | 🔴 | (no summary) |
+| [example/lib/src/rust/frb_generated.web.dart](https://github.com/FRICK-ELDY/rust-3d/blob/main/example/lib/src/rust/frb_generated.web.dart) | 458 | 🔴 | (no summary) |
+| [example/lib/ui/features/camera/camera_actions.dart](https://github.com/FRICK-ELDY/rust-3d/blob/main/example/lib/ui/features/camera/camera_actions.dart) | 232 | 🔴 | FRBに合わせたCamera制御。JPG取得→ui.Image化、JSON→Euler反映、OSC送信はOscRuntimeへ |
 | [example/lib/ui/features/camera/camera_state.dart](https://github.com/FRICK-ELDY/rust-3d/blob/main/example/lib/ui/features/camera/camera_state.dart) | 60 | 🟡 | Cameraの状態（UI用）。joints/Euler 値やプレビュー画像を保持 |
 | [example/lib/ui/features/camera/camera_view.dart](https://github.com/FRICK-ELDY/rust-3d/blob/main/example/lib/ui/features/camera/camera_view.dart) | 230 | 🔴 | Camera UIカード。プレビューの RawImage 表示や各種設定UI |
 | [example/lib/ui/features/face/face_actions.dart](https://github.com/FRICK-ELDY/rust-3d/blob/main/example/lib/ui/features/face/face_actions.dart) | 16 | 🟢 | 顔表情（UIのみ・モック送信） |
@@ -45,11 +45,11 @@
 ### Rust - Camera,Tracking,Osc API 
 | Path | Lines | Status | Summary |
 |------|------:|:------:|---------|
-| [example/rust/src/api/camera.rs](https://github.com/FRICK-ELDY/rust-3d/blob/main/example/rust/src/api/camera.rs) | 39 | 🟢 | (no summary) |
+| [example/rust/src/api/camera.rs](https://github.com/FRICK-ELDY/rust-3d/blob/main/example/rust/src/api/camera.rs) | 58 | 🟡 | カメラ列挙の足場（まずはスタブ → 後でOS別実装に置換） |
 | [example/rust/src/api/mod.rs](https://github.com/FRICK-ELDY/rust-3d/blob/main/example/rust/src/api/mod.rs) | 6 | 🟢 | apiモジュールの集約 |
-| [example/rust/src/api/osc.rs](https://github.com/FRICK-ELDY/rust-3d/blob/main/example/rust/src/api/osc.rs) | 26 | 🟢 | (no summary) |
-| [example/rust/src/api/tracking.rs](https://github.com/FRICK-ELDY/rust-3d/blob/main/example/rust/src/api/tracking.rs) | 22 | 🟢 | (no summary) |
-| [example/rust/src/frb_generated.rs](https://github.com/FRICK-ELDY/rust-3d/blob/main/example/rust/src/frb_generated.rs) | 848 | 🔴 | (no summary) |
+| [example/rust/src/api/osc.rs](https://github.com/FRICK-ELDY/rust-3d/blob/main/example/rust/src/api/osc.rs) | 28 | 🟢 | OSCは現状のAPIでOK。必要ならデフォルトパスやバイナリアレイ送信を後日追加 |
+| [example/rust/src/api/tracking.rs](https://github.com/FRICK-ELDY/rust-3d/blob/main/example/rust/src/api/tracking.rs) | 44 | 🟢 | トラッキングの型とモデル選択の足場（後で推論器に差し替え） |
+| [example/rust/src/frb_generated.rs](https://github.com/FRICK-ELDY/rust-3d/blob/main/example/rust/src/frb_generated.rs) | 1063 | 🔴 | (no summary) |
 | [example/rust/src/lib.rs](https://github.com/FRICK-ELDY/rust-3d/blob/main/example/rust/src/lib.rs) | 8 | 🟢 | FRB v2用 lib.rs（余計なimportを排除） |
 
 ## Directory / File Tree
@@ -103,10 +103,10 @@ root/
 │  │  ├─ Cargo.toml
 │  │  └─ src/
 │  │     ├─ api/
-│  │     │  ├─ camera.rs
+│  │     │  ├─ camera.rs — カメラ列挙の足場（まずはスタブ → 後でOS別実装に置換）
 │  │     │  ├─ mod.rs — apiモジュールの集約
-│  │     │  ├─ osc.rs
-│  │     │  └─ tracking.rs
+│  │     │  ├─ osc.rs — OSCは現状のAPIでOK。必要ならデフォルトパスやバイナリアレイ送信を後日追加
+│  │     │  └─ tracking.rs — トラッキングの型とモデル選択の足場（後で推論器に差し替え）
 │  │     ├─ frb_generated.rs
 │  │     └─ lib.rs — FRB v2用 lib.rs（余計なimportを排除）
 │  └─ test_driver/

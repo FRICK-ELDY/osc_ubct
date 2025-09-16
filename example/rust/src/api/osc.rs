@@ -1,10 +1,12 @@
+//! summary: OSCは現状のAPIでOK。必要ならデフォルトパスやバイナリアレイ送信を後日追加
 //! path: example/rust/src/api/osc.rs
+
 use anyhow::Result;
 use rosc::{OscMessage, OscPacket, OscType};
 use std::net::{Ipv4Addr, UdpSocket};
-use flutter_rust_bridge::frb;          // ← 追加
+use flutter_rust_bridge::frb;
 
-#[frb(opaque)]                          // ← 追加
+#[frb(opaque)]
 #[derive(Debug)]
 pub struct OscSender {
     sock: UdpSocket,

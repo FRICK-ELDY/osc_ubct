@@ -6,13 +6,26 @@
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `fmt`
+// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `fmt`, `fmt`
 
 Future<Tracker> trackingInit({String? modelPath}) =>
     RustLib.instance.api.crateApiTrackingTrackingInit(modelPath: modelPath);
+
+Future<void> trackingSelectModel({required Tracker tr, required ModelId id}) =>
+    RustLib.instance.api.crateApiTrackingTrackingSelectModel(tr: tr, id: id);
 
 Future<Uint8List> trackingLatestJson({required Tracker tr}) =>
     RustLib.instance.api.crateApiTrackingTrackingLatestJson(tr: tr);
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Tracker>>
 abstract class Tracker implements RustOpaqueInterface {}
+
+enum ModelId {
+  auto,
+  mediaPipeUpper,
+  moveNetLightning,
+  moveNetThunder,
+  blazePoseUpper,
+  openPoseUpper,
+  yoloV8Upper,
+}

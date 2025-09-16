@@ -33,11 +33,25 @@ class CameraActions {
 
   // === ネイティブのカメラ一覧 ===
   Future<void> loadNativeCameras() async {
-    // 現状のFRBサンプルAPIは列挙を提供していないため、既定の index=0 を提示
-    state.availableCameras = const ['Default Camera (0)'];
-    state.nativeCameraIndexByLabel = {'Default Camera (0)': 0};
-    state.selectedCamera ??= state.availableCameras.first;
-    refresh();
+    try {
+      final list = await cam_api.cameraList(); // ← Rustの camera_list()
+      if (list.isEmpty) {
+        state.availableCameras = const [];
+        state.nativeCameraIndexByLabel = {};
+        state.selectedCamera = null;
+      } else {
+        state.availableCameras = list.map((e) => e.label).toList();
+        state.nativeCameraIndexByLabel = { for (final e in list) e.label: e.idx };
+        state.selectedCamera ??= state.availableCameras.first;
+      }
+      refresh();
+    } catch (_) {
+      // Rust未実装のうちは暫定フォールバック
+      state.availableCameras = const ['Default Camera (0)'];
+      state.nativeCameraIndexByLabel = {'Default Camera (0)': 0};
+      state.selectedCamera ??= state.availableCameras.first;
+      refresh();
+    }
   }
 
   void toggleTracking(BuildContext context) {
