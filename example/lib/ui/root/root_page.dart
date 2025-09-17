@@ -1,14 +1,15 @@
-//! summary: 9:19.5 の縦長パネルに UI をレイアウトするルートページ
+//! summary: FRBバッジ（OK/NGともに）を完全に削除し、シンプルなヘッダのみのレイアウトにする
 //! path: example/lib/ui/root/root_page.dart
-
 import 'package:flutter/material.dart';
-import '../../common_view/badge_chip.dart';
+
 import '../features/camera/camera_state.dart';
 import '../features/camera/camera_actions.dart';
 import '../features/camera/camera_view.dart';
+
 import '../features/osc/osc_state.dart';
 import '../features/osc/osc_actions.dart';
 import '../features/osc/osc_view.dart';
+
 import '../features/face/face_state.dart';
 import '../features/face/face_actions.dart';
 import '../features/face/face_view.dart';
@@ -112,8 +113,6 @@ class _PanelState extends State<_Panel> {
                   style: Theme.of(context).textTheme.titleLarge,
                 ),
               ),
-              const SizedBox(width: 8),
-              const BadgeChip(text: 'UI only'),
             ],
           ),
           const SizedBox(height: 8),

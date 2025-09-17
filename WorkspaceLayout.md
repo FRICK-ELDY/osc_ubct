@@ -1,6 +1,6 @@
 # Workspace Layout
 
-- Generated: 2025-09-17 01:21:01
+- Generated: 2025-09-17 17:45:18
 - Root: `D:\Work\FRICK-ELDY\osc_ubct`
 - Max Depth: none
 - Excludes: `.dart_tool, .git, .github, .gitignore, .idea, .metadata, .vscode, CHANGELOG.md, LICENSE, README.md, WorkspaceLayout.md, analysis_options.yaml, android, assets, bin, build, dev-log.md, dist, docs, ios, linux, macos, node_modules, out, pubspec.lock, pubspec.yaml, rust_builder, target, test, windows, xtask`
@@ -19,18 +19,19 @@
 |------|------:|:------:|---------|
 | [example/lib/common_view/app_card.dart](https://github.com/FRICK-ELDY/rust-3d/blob/main/example/lib/common_view/app_card.dart) | 21 | 🟢 | カード風のコンテナ（共通見た目） |
 | [example/lib/common_view/badge_chip.dart](https://github.com/FRICK-ELDY/rust-3d/blob/main/example/lib/common_view/badge_chip.dart) | 22 | 🟢 | バッジチップ（UI onlyなどの表示） |
-| [example/lib/main.dart](https://github.com/FRICK-ELDY/rust-3d/blob/main/example/lib/main.dart) | 49 | 🟢 | デスクトップで 9:19.5 の縦長ウィンドウに整える（window_manager 版） |
+| [example/lib/main.dart](https://github.com/FRICK-ELDY/rust-3d/blob/main/example/lib/main.dart) | 46 | 🟢 | デスクトップで 9:19.5 縦長ウィンドウ & FRB 初期化してから UI 起動 |
 | [example/lib/models/euler.dart](https://github.com/FRICK-ELDY/rust-3d/blob/main/example/lib/models/euler.dart) | 7 | 🟢 | Euler角のシンプルなデータクラス |
 | [example/lib/services/runtime/osc_runtime.dart](https://github.com/FRICK-ELDY/rust-3d/blob/main/example/lib/services/runtime/osc_runtime.dart) | 37 | 🟢 | FRBを使ったシンプルOSCランタイム。UIからの設定はここに集約、送信はCameraのtickから呼ぶ |
-| [example/lib/src/rust/api/camera.dart](https://github.com/FRICK-ELDY/rust-3d/blob/main/example/lib/src/rust/api/camera.dart) | 71 | 🟡 | (no summary) |
+| [example/lib/src/rust/api/camera.dart](https://github.com/FRICK-ELDY/rust-3d/blob/main/example/lib/src/rust/api/camera.dart) | 72 | 🟡 | (no summary) |
 | [example/lib/src/rust/api/osc.dart](https://github.com/FRICK-ELDY/rust-3d/blob/main/example/lib/src/rust/api/osc.dart) | 25 | 🟢 | (no summary) |
-| [example/lib/src/rust/api/tracking.dart](https://github.com/FRICK-ELDY/rust-3d/blob/main/example/lib/src/rust/api/tracking.dart) | 31 | 🟢 | (no summary) |
+| [example/lib/src/rust/api/tracking.dart](https://github.com/FRICK-ELDY/rust-3d/blob/main/example/lib/src/rust/api/tracking.dart) | 38 | 🟢 | (no summary) |
 | [example/lib/src/rust/frb_generated.dart](https://github.com/FRICK-ELDY/rust-3d/blob/main/example/lib/src/rust/frb_generated.dart) | 1159 | 🔴 | (no summary) |
 | [example/lib/src/rust/frb_generated.io.dart](https://github.com/FRICK-ELDY/rust-3d/blob/main/example/lib/src/rust/frb_generated.io.dart) | 482 | 🔴 | (no summary) |
 | [example/lib/src/rust/frb_generated.web.dart](https://github.com/FRICK-ELDY/rust-3d/blob/main/example/lib/src/rust/frb_generated.web.dart) | 458 | 🔴 | (no summary) |
-| [example/lib/ui/features/camera/camera_actions.dart](https://github.com/FRICK-ELDY/rust-3d/blob/main/example/lib/ui/features/camera/camera_actions.dart) | 232 | 🔴 | FRBに合わせたCamera制御。JPG取得→ui.Image化、JSON→Euler反映、OSC送信はOscRuntimeへ |
+| [example/lib/ui/features/camera/camera_actions.dart](https://github.com/FRICK-ELDY/rust-3d/blob/main/example/lib/ui/features/camera/camera_actions.dart) | 234 | 🔴 | カメラ列挙をFRB化 & モデル選択でRustを更新。開始時にも反映 |
 | [example/lib/ui/features/camera/camera_state.dart](https://github.com/FRICK-ELDY/rust-3d/blob/main/example/lib/ui/features/camera/camera_state.dart) | 60 | 🟡 | Cameraの状態（UI用）。joints/Euler 値やプレビュー画像を保持 |
 | [example/lib/ui/features/camera/camera_view.dart](https://github.com/FRICK-ELDY/rust-3d/blob/main/example/lib/ui/features/camera/camera_view.dart) | 230 | 🔴 | Camera UIカード。プレビューの RawImage 表示や各種設定UI |
+| [example/lib/ui/features/camera/model_mapping.dart](https://github.com/FRICK-ELDY/rust-3d/blob/main/example/lib/ui/features/camera/model_mapping.dart) | 23 | 🟢 | UIラベル→RustのModelId（FRB生成enum）に変換 |
 | [example/lib/ui/features/face/face_actions.dart](https://github.com/FRICK-ELDY/rust-3d/blob/main/example/lib/ui/features/face/face_actions.dart) | 16 | 🟢 | 顔表情（UIのみ・モック送信） |
 | [example/lib/ui/features/face/face_state.dart](https://github.com/FRICK-ELDY/rust-3d/blob/main/example/lib/ui/features/face/face_state.dart) | 7 | 🟢 | 顔表情のUI状態 |
 | [example/lib/ui/features/face/face_view.dart](https://github.com/FRICK-ELDY/rust-3d/blob/main/example/lib/ui/features/face/face_view.dart) | 48 | 🟢 | 顔表情のUIカード |
@@ -38,17 +39,17 @@
 | [example/lib/ui/features/osc/osc_state.dart](https://github.com/FRICK-ELDY/rust-3d/blob/main/example/lib/ui/features/osc/osc_state.dart) | 24 | 🟢 | OSCのUI状態。テキストフィールドコントローラと簡易バリデーション |
 | [example/lib/ui/features/osc/osc_view.dart](https://github.com/FRICK-ELDY/rust-3d/blob/main/example/lib/ui/features/osc/osc_view.dart) | 82 | 🟡 | OSCカード。ターゲット設定と送信ON/OFFのUI |
 | [example/lib/ui/features/settings/display_settings_sheet.dart](https://github.com/FRICK-ELDY/rust-3d/blob/main/example/lib/ui/features/settings/display_settings_sheet.dart) | 96 | 🟡 | 表示設定ボトムシート（Pull / Preview / Data） |
-| [example/lib/ui/root/root_page.dart](https://github.com/FRICK-ELDY/rust-3d/blob/main/example/lib/ui/root/root_page.dart) | 137 | 🟠 | 9:19.5 の縦長パネルに UI をレイアウトするルートページ |
+| [example/lib/ui/root/root_page.dart](https://github.com/FRICK-ELDY/rust-3d/blob/main/example/lib/ui/root/root_page.dart) | 136 | 🟠 | FRBバッジ（OK/NGともに）を完全に削除し、シンプルなヘッダのみのレイアウトにする |
 
 ---
 
 ### Rust - Camera,Tracking,Osc API 
 | Path | Lines | Status | Summary |
 |------|------:|:------:|---------|
-| [example/rust/src/api/camera.rs](https://github.com/FRICK-ELDY/rust-3d/blob/main/example/rust/src/api/camera.rs) | 58 | 🟡 | カメラ列挙の足場（まずはスタブ → 後でOS別実装に置換） |
+| [example/rust/src/api/camera.rs](https://github.com/FRICK-ELDY/rust-3d/blob/main/example/rust/src/api/camera.rs) | 56 | 🟡 | カメラ列挙とモックプレビュー（FRB越しにDartへCameraInfoを返す） |
 | [example/rust/src/api/mod.rs](https://github.com/FRICK-ELDY/rust-3d/blob/main/example/rust/src/api/mod.rs) | 6 | 🟢 | apiモジュールの集約 |
 | [example/rust/src/api/osc.rs](https://github.com/FRICK-ELDY/rust-3d/blob/main/example/rust/src/api/osc.rs) | 28 | 🟢 | OSCは現状のAPIでOK。必要ならデフォルトパスやバイナリアレイ送信を後日追加 |
-| [example/rust/src/api/tracking.rs](https://github.com/FRICK-ELDY/rust-3d/blob/main/example/rust/src/api/tracking.rs) | 44 | 🟢 | トラッキングの型とモデル選択の足場（後で推論器に差し替え） |
+| [example/rust/src/api/tracking.rs](https://github.com/FRICK-ELDY/rust-3d/blob/main/example/rust/src/api/tracking.rs) | 57 | 🟡 | トラッキングAPI（FRB v2対応）。モデル選択とJSON出力、配線確認用タグを提供 |
 | [example/rust/src/frb_generated.rs](https://github.com/FRICK-ELDY/rust-3d/blob/main/example/rust/src/frb_generated.rs) | 1063 | 🔴 | (no summary) |
 | [example/rust/src/lib.rs](https://github.com/FRICK-ELDY/rust-3d/blob/main/example/rust/src/lib.rs) | 8 | 🟢 | FRB v2用 lib.rs（余計なimportを排除） |
 
@@ -65,7 +66,7 @@ root/
 │  │  ├─ common_view/
 │  │  │  ├─ app_card.dart — カード風のコンテナ（共通見た目）
 │  │  │  └─ badge_chip.dart — バッジチップ（UI onlyなどの表示）
-│  │  ├─ main.dart — デスクトップで 9:19.5 の縦長ウィンドウに整える（window_manager 版）
+│  │  ├─ main.dart — デスクトップで 9:19.5 縦長ウィンドウ & FRB 初期化してから UI 起動
 │  │  ├─ models/
 │  │  │  └─ euler.dart — Euler角のシンプルなデータクラス
 │  │  ├─ services/
@@ -83,9 +84,10 @@ root/
 │  │  └─ ui/
 │  │     ├─ features/
 │  │     │  ├─ camera/
-│  │     │  │  ├─ camera_actions.dart — FRBに合わせたCamera制御。JPG取得→ui.Image化、JSON→Euler反映、OSC送信はOscRuntimeへ
+│  │     │  │  ├─ camera_actions.dart — カメラ列挙をFRB化 & モデル選択でRustを更新。開始時にも反映
 │  │     │  │  ├─ camera_state.dart — Cameraの状態（UI用）。joints/Euler 値やプレビュー画像を保持
-│  │     │  │  └─ camera_view.dart — Camera UIカード。プレビューの RawImage 表示や各種設定UI
+│  │     │  │  ├─ camera_view.dart — Camera UIカード。プレビューの RawImage 表示や各種設定UI
+│  │     │  │  └─ model_mapping.dart — UIラベル→RustのModelId（FRB生成enum）に変換
 │  │     │  ├─ face/
 │  │     │  │  ├─ face_actions.dart — 顔表情（UIのみ・モック送信）
 │  │     │  │  ├─ face_state.dart — 顔表情のUI状態
@@ -97,16 +99,16 @@ root/
 │  │     │  └─ settings/
 │  │     │     └─ display_settings_sheet.dart — 表示設定ボトムシート（Pull / Preview / Data）
 │  │     └─ root/
-│  │        └─ root_page.dart — 9:19.5 の縦長パネルに UI をレイアウトするルートページ
+│  │        └─ root_page.dart — FRBバッジ（OK/NGともに）を完全に削除し、シンプルなヘッダのみのレイアウトにする
 │  ├─ rust/
 │  │  ├─ Cargo.lock
 │  │  ├─ Cargo.toml
 │  │  └─ src/
 │  │     ├─ api/
-│  │     │  ├─ camera.rs — カメラ列挙の足場（まずはスタブ → 後でOS別実装に置換）
+│  │     │  ├─ camera.rs — カメラ列挙とモックプレビュー（FRB越しにDartへCameraInfoを返す）
 │  │     │  ├─ mod.rs — apiモジュールの集約
 │  │     │  ├─ osc.rs — OSCは現状のAPIでOK。必要ならデフォルトパスやバイナリアレイ送信を後日追加
-│  │     │  └─ tracking.rs — トラッキングの型とモデル選択の足場（後で推論器に差し替え）
+│  │     │  └─ tracking.rs — トラッキングAPI（FRB v2対応）。モデル選択とJSON出力、配線確認用タグを提供
 │  │     ├─ frb_generated.rs
 │  │     └─ lib.rs — FRB v2用 lib.rs（余計なimportを排除）
 │  └─ test_driver/
