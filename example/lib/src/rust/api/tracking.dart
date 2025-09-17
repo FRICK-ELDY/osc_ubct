@@ -8,18 +8,25 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `fmt`, `fmt`
 
+/// トラッカー生成（MVPではモデルは未ロード）
 Future<Tracker> trackingInit({String? modelPath}) =>
     RustLib.instance.api.crateApiTrackingTrackingInit(modelPath: modelPath);
 
+/// モデルを選択（MVPでは文字列保持のみ。後に実モデルのロード/切替処理へ差し替え）
 Future<void> trackingSelectModel({required Tracker tr, required ModelId id}) =>
     RustLib.instance.api.crateApiTrackingTrackingSelectModel(tr: tr, id: id);
 
+/// 最新の推定結果を JSON で返す（MVP: ダミーの角度値）
+///
+/// - UI側は `{"joints":{...}}` または `{"angle":{r,p,y}}` のいずれにも対応しているため、
+///   まずは軽量な `angle` 形式を返す。
 Future<Uint8List> trackingLatestJson({required Tracker tr}) =>
     RustLib.instance.api.crateApiTrackingTrackingLatestJson(tr: tr);
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<Tracker>>
 abstract class Tracker implements RustOpaqueInterface {}
 
+/// UIのドロップダウンと1対1で対応する列挙
 enum ModelId {
   auto,
   mediaPipeUpper,

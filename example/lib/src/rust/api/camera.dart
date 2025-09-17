@@ -8,6 +8,7 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 // These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `fmt`, `fmt`, `fmt`
 
+/// 将来は OS 別実装（MediaFoundation / AVFoundation / v4l2）に置換
 Future<List<CameraInfo>> cameraList() =>
     RustLib.instance.api.crateApiCameraCameraList();
 

@@ -1,6 +1,5 @@
-//! summary: カメラ列挙の足場（まずはスタブ → 後でOS別実装に置換）
+//! summary: カメラ列挙とモックプレビュー（FRB越しにDartへCameraInfoを返す）
 //! path: example/rust/src/api/camera.rs
-
 use image::{codecs::jpeg::JpegEncoder, ImageBuffer, Rgb};
 use std::time::Instant;
 use flutter_rust_bridge::frb;
@@ -27,12 +26,11 @@ pub struct Frame {
     pub height: i32,
 }
 
-// === 追加: 列挙API（後でWin: MediaFoundation, macOS/iOS: AVFoundation, Linux: v4l2等に差し替え） ===
+/// 将来は OS 別実装（MediaFoundation / AVFoundation / v4l2）に置換
 pub fn camera_list() -> Vec<CameraInfo> {
     vec![CameraInfo { label: "Default Camera (0)".into(), idx: 0 }]
 }
 
-// 既存のMVP（モック）:
 pub fn camera_open(_index: i32, w: i32, h: i32, fps: i32) -> Camera {
     Camera { w, h, fps, t0: Instant::now() }
 }

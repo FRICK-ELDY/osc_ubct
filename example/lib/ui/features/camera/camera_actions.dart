@@ -1,6 +1,5 @@
-//! summary: FRBに合わせたCamera制御。JPG取得→ui.Image化、JSON→Euler反映、OSC送信はOscRuntimeへ
+//! summary: カメラ列挙をFRB化 & モデル選択でRustを更新。開始時にも反映
 //! path: example/lib/ui/features/camera/camera_actions.dart
-
 import 'dart:async';
 import 'dart:convert';
 import 'dart:math' as math;
@@ -12,8 +11,9 @@ import 'camera_state.dart';
 import '../settings/display_settings_sheet.dart';
 import '../../../models/euler.dart';
 import '../../../services/runtime/osc_runtime.dart';
+import 'model_mapping.dart';
 
-// FRB 生成コード（プロジェクトに合わせて相対パスを調整）
+// FRB 生成コード
 import '../../../src/rust/api/camera.dart' as cam_api;
 import '../../../src/rust/api/tracking.dart' as tr_api;
 
@@ -22,19 +22,17 @@ class CameraActions {
   final VoidCallback refresh;
   Timer? _pullTimer;
 
-  // FRBハンドル
   cam_api.Camera? _cam;
   tr_api.Tracker? _tracker;
 
-  // プレビュー取得の多重呼び出し防止
   bool _gettingPreview = false;
 
   CameraActions(this.state, this.refresh);
 
-  // === ネイティブのカメラ一覧 ===
+  // === FRBで列挙 ===
   Future<void> loadNativeCameras() async {
     try {
-      final list = await cam_api.cameraList(); // ← Rustの camera_list()
+      final list = await cam_api.cameraList();
       if (list.isEmpty) {
         state.availableCameras = const [];
         state.nativeCameraIndexByLabel = {};
@@ -44,14 +42,13 @@ class CameraActions {
         state.nativeCameraIndexByLabel = { for (final e in list) e.label: e.idx };
         state.selectedCamera ??= state.availableCameras.first;
       }
-      refresh();
     } catch (_) {
-      // Rust未実装のうちは暫定フォールバック
+      // Rust未実装時の安全フォールバック
       state.availableCameras = const ['Default Camera (0)'];
       state.nativeCameraIndexByLabel = {'Default Camera (0)': 0};
       state.selectedCamera ??= state.availableCameras.first;
-      refresh();
     }
+    refresh();
   }
 
   void toggleTracking(BuildContext context) {
@@ -64,13 +61,18 @@ class CameraActions {
       return;
     }
 
-    // 既存のタイマー/ハンドルは一旦停止
     _stopPullTimer();
 
-    // カメラ/トラッカーを起動（FRB）
     final camIdx = state.nativeCameraIndexByLabel[state.selectedCamera] ?? 0;
     _cam = await cam_api.cameraOpen(index: camIdx, w: 640, h: 480, fps: 30);
     _tracker = await tr_api.trackingInit(modelPath: null);
+
+    // ← モデル選択をRustにも反映
+    try {
+      await tr_api.trackingSelectModel(
+        tr: _tracker!, id: modelIdFromLabel(state.selectedModel),
+      );
+    } catch (_) {}
 
     state.tracking = true;
     state.frameCount = 0;
@@ -91,7 +93,6 @@ class CameraActions {
   void _startPullTimer() {
     _pullTimer?.cancel();
     _pullTimer = Timer.periodic(Duration(milliseconds: state.pullIntervalMs), (_) async {
-      // 1) プレビュー（ONのときのみ）
       if (state.showPreview && !_gettingPreview && _cam != null) {
         _gettingPreview = true;
         try {
@@ -100,14 +101,12 @@ class CameraActions {
           state.previewImage?.dispose();
           state.previewImage = img;
         } catch (_) {
-          // 無視して継続
         } finally {
           _gettingPreview = false;
           refresh();
         }
       }
 
-      // 2) トラッキングJSONの取得→状態反映→OSC送信（有効時）
       if (_tracker != null) {
         try {
           final bytes = await tr_api.trackingLatestJson(tr: _tracker!);
@@ -115,12 +114,9 @@ class CameraActions {
             _applyNativeJson(bytes);
             await OscRuntime.sendJsonIfEnabled(Uint8List.fromList(bytes));
           }
-        } catch (_) {
-          // JSON取得失敗は無視
-        }
+        } catch (_) {}
       }
 
-      // 3) フレームカウント
       state.frameCount++;
       refresh();
     });
@@ -143,8 +139,16 @@ class CameraActions {
     refresh();
   }
 
-  void onModelChanged(String v, BuildContext context) {
-    state.selectedModel = v; // 現状はUIのみ保持（推論器切替は後続で実装）
+  void onModelChanged(String v, BuildContext context) async {
+    state.selectedModel = v;
+    // 追従してRust側のモデルも切り替え（トラッキング中のみ）
+    if (_tracker != null) {
+      try {
+        await tr_api.trackingSelectModel(
+          tr: _tracker!, id: modelIdFromLabel(v),
+        );
+      } catch (_) {}
+    }
     refresh();
     _snack(context, 'Model: $v');
   }
@@ -181,13 +185,13 @@ class CameraActions {
     final codec = await ui.instantiateImageCodec(bytes);
     final frame = await codec.getNextFrame();
     return frame.image;
+    // ※ 必要になったら codec.dispose() を追加
   }
 
   void _applyNativeJson(List<int> jsonBytes) {
     try {
       final map = json.decode(utf8.decode(jsonBytes)) as Map<String, dynamic>;
 
-      // 1) joints 形式（{ joints: { name: {r,p,y} } })
       final joints = map['joints'];
       if (joints is Map<String, dynamic>) {
         Euler parse(Map<String, dynamic> m) =>
@@ -201,7 +205,6 @@ class CameraActions {
         return;
       }
 
-      // 2) angle 形式（{ angle: {r,p,y} }）→ neck に割り当て
       final angle = map['angle'];
       if (angle is Map<String, dynamic>) {
         final e = Euler((angle['r'] ?? 0).toDouble(), (angle['p'] ?? 0).toDouble(), (angle['y'] ?? 0).toDouble());
@@ -209,10 +212,9 @@ class CameraActions {
         return;
       }
     } catch (_) {
-      // パース失敗時は下のUIモックへフォールバック
+      // 下のモックへフォールバック
     }
 
-    // ---- ネイティブ無/異常時モック（既存UIと同じ挙動） ----
     final t = DateTime.now().millisecondsSinceEpoch / 1000.0;
     final a = t * 2 * math.pi * 0.5;
     final sin = math.sin(a);
