@@ -1,0 +1,11 @@
+[submodule "windows/thirdparty/opencv"]
+	path = windows/thirdparty/opencv
+	url = https://github.com/opencv/opencv.git
+
+[submodule "windows/thirdparty/oscpack"]
+	path = windows/thirdparty/oscpack
+	url = https://github.com/RossBencina/oscpack.git
+
+[submodule "windows/thirdparty/glm"]
+	path = windows/thirdparty/glm
+	url = https://github.com/g-truc/glm.git
