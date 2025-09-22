@@ -4,12 +4,9 @@
 
 list(APPEND FLUTTER_PLUGIN_LIST
   osc_ubct
-  screen_retriever_windows
-  window_manager
 )
 
 list(APPEND FLUTTER_FFI_PLUGIN_LIST
-  rust_lib_osc_ubct_example
 )
 
 set(PLUGIN_BUNDLED_LIBRARIES)
