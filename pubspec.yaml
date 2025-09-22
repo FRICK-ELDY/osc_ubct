@@ -10,12 +10,15 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_web_plugins:
+    sdk: flutter
+  web: ^1.0.0
   plugin_platform_interface: ^2.0.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^5.0.0
+  flutter_lints: 6.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -45,6 +48,9 @@ flutter:
         pluginClass: OscUbctPlugin
       windows:
         pluginClass: OscUbctPluginCApi
+      web:
+        pluginClass: OscUbctWeb
+        fileName: osc_ubct_web.dart
 
   # To add assets to your plugin package, add an assets section, like this:
   # assets:

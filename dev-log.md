@@ -3,41 +3,20 @@
 git clone osc_ubtc
 cd osc_ubtc
 ```
-
-## FlutterとRustのつなぎ込み
-```
-cargo install flutter_rust_bridge_codegen
-```
-
 ## Flutterプラグイン雛形作成
 ```
 flutter upgrade
-flutter create --template=plugin --platforms=windows,linux,macos,android,ios .
+flutter create --template=plugin --org com.example --platforms=windows,linux,macos,android,ios,web -i swift -a kotlin .
 ```
 動作確認
 ```
 flutter pub get
 cd example
 flutter pub get
-flutter run -d windows
-```
-
-## Rust プラグイン
-```
-cd example
-flutter_rust_bridge_codegen integrate
-flutter_rust_bridge_codegen generate --watch
-```
-動作確認
-```
-flutter run -d windows
-```
-
-## ビルド手順
-```
-cd example
-flutter clean
-flutter_rust_bridge_codegen generate
-flutter pub get
-flutter run -d windows
+flutter run -d windows    # Windows
+flutter run -d macos      # macOS
+flutter run -d linux      # Linux
+flutter run -d android    # Android
+flutter run -d ios        # iOS
+flutter run -d chrome     # Web
 ```
