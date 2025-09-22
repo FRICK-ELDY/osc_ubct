@@ -20,3 +20,9 @@ flutter run -d android    # Android
 flutter run -d ios        # iOS
 flutter run -d chrome     # Web
 ```
+## thirdparty
+```
+git submodule add https://github.com/opencv/opencv.git windows/thirdparty/opencv
+git submodule add https://github.com/RossBencina/oscpack.git windows/thirdparty/oscpack
+git submodule add https://github.com/g-truc/glm.git windows/thirdparty/glm
+```

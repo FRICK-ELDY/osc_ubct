@@ -32,4 +32,10 @@ migrate_working_dir/
 /build/
 /coverage/
 
-target
+# Flutter auto-generated registrants (example app)
+example/**/flutter/generated_plugin_registrant.*
+example/**/flutter/generated_plugins.cmake
+example/**/Flutter/GeneratedPluginRegistrant.*
+
+# rust
+xtask/target
