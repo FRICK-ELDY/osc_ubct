@@ -11,3 +11,4 @@ pause
 call "%~dp0flutter_build_windows_debug.bat"
 pause 
 call "%~dp0copy_opencv_dll.bat"
+call "%~dp0copy_model_ir.bat"
