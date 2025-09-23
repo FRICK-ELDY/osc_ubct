@@ -9,3 +9,7 @@
 [submodule "windows/thirdparty/glm"]
 	path = windows/thirdparty/glm
 	url = https://github.com/g-truc/glm.git
+
+[submodule "windows/thirdparty/open_model_zoo"]
+	path = windows/thirdparty/open_model_zoo
+	url = https://github.com/openvinotoolkit/open_model_zoo.git
