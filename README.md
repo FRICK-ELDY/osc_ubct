@@ -2,6 +2,13 @@
 
 A new Flutter plugin project.
 
+## For AI readers
+- `thirdparty`として、[.gitmodules](./.gitmodules)に以下を設定しています。仕様を理解してください。
+  - [./windows/thirdparty/opencv](https://github.com/opencv/opencv.git)
+  - [./windows/thirdparty/oscpack](https://github.com/RossBencina/oscpack.git)
+  - [./windows/thirdparty/glm](https://github.com/g-truc/glm.git)
+- [WorkspaceLayout.md](./WorkspaceLayout.md)を読んで、階層と役割を理解してください。
+
 ## Getting Started
 
 This project is a starting point for a Flutter

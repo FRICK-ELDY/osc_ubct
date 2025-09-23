@@ -20,7 +20,7 @@ pub fn collect_sectioned_rows(
         if node
             .path
             .extension()
-            .map(|e| e == "rs" || e == "dart")
+            .map(|e| e == "cpp" || e == "hpp" || e == "h" || e == "dart")
             .unwrap_or(false)
         {
             let rel = node
