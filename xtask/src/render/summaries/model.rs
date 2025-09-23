@@ -4,14 +4,16 @@
 #[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd)]
 pub enum Section {
     Dart,
-    Rust,
+    Lib,
+    Windows,
 }
 
 impl Section {
     pub fn title(&self) -> &'static str {
         match self {
             Section::Dart => "### Dart - Flutter UI",
-            Section::Rust => "### Rust - Camera,Tracking,Osc API ",
+             Section::Lib => "### Flutter x Cpp Lib",
+            Section::Windows => "### Windows - Camera, Tracking, Osc API ",
         }
     }
 
@@ -19,7 +21,8 @@ impl Section {
     pub fn order() -> &'static [Section] {
         &[
             Section::Dart,
-            Section::Rust,
+            Section::Lib,
+            Section::Windows,
         ]
     }
 }

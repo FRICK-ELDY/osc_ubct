@@ -7,8 +7,10 @@ use super::model::Section;
 pub fn classify_section(rel: &str) -> Option<Section> {
     if rel.starts_with("example/lib/") {
         Some(Section::Dart)
-    } else if rel.starts_with("example/rust") {
-        Some(Section::Rust)
+    } else if rel.starts_with("lib/") {
+        Some(Section::Lib)
+    } else if rel.starts_with("windows/") {
+        Some(Section::Windows)
     } else {
         None
     }

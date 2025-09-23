@@ -10,7 +10,7 @@ use std::{
 };
 
 pub fn is_rs_or_wgsl(p: &Utf8Path) -> bool {
-    matches!(p.extension(), Some(ext) if ext == "rs" || ext == "dart")
+    matches!(p.extension(), Some(ext) if ext == "cpp" || ext == "hpp" || ext == "h" || ext == "dart")
 }
 
 pub fn read_first_line_summary(path: &Path) -> anyhow::Result<Option<String>> {

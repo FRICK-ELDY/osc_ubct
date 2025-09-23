@@ -5,7 +5,7 @@ use super::model::{Row, Section};
 use crate::render::utils::{sanitize_md_cell, url_encode_path};
 use std::collections::BTreeMap;
 
-pub const BASE_URL: &str = "https://github.com/FRICK-ELDY/rust-3d/blob/main/";
+pub const BASE_URL: &str = "https://github.com/FRICK-ELDY/osc_ubct/blob/main/";
 
 /// 収集済みセクションを Markdown として出力
 pub fn write_sections(out: &mut String, mut sections: BTreeMap<Section, Vec<Row>>) {

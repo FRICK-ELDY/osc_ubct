@@ -54,11 +54,12 @@ pub fn default_excludes() -> BTreeSet<String> {
         "pubspec.yaml",
         "pubspec.lock",
 
-        "windows",
+        "web",
         "macos",
         "linux",
         "android",
         "ios",
+        "thirdparty",
 
         "test",
         "xtask",
