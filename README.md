@@ -7,6 +7,7 @@ A new Flutter plugin project.
   - [./windows/thirdparty/opencv](https://github.com/opencv/opencv.git)
   - [./windows/thirdparty/oscpack](https://github.com/RossBencina/oscpack.git)
   - [./windows/thirdparty/glm](https://github.com/g-truc/glm.git)
+  - [./windows/thirdparty/open_model_zoo](https://github.com/openvinotoolkit/open_model_zoo.git)
 - [WorkspaceLayout.md](./WorkspaceLayout.md)を読んで、階層と役割を理解してください。
 
 ## Getting Started

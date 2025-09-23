@@ -20,6 +20,12 @@ flutter run -d android    # Android
 flutter run -d ios        # iOS
 flutter run -d chrome     # Web
 ```
+## PyTorch→ONNX 変換の依存
+```
+py -3 -m pip install onnx
+py -3 -m pip install --index-url https://download.pytorch.org/whl/cpu torch torchvision
+py -3 -m pip install --upgrade openvino-dev
+```
 ## thirdparty
 ```
 git submodule add https://github.com/opencv/opencv.git windows/thirdparty/opencv
