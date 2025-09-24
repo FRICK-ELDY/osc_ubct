@@ -1,6 +1,6 @@
 # Workspace Layout
 
-- Generated: 2025-09-23 15:12:00
+- Generated: 2025-09-24 20:17:44
 - Root: `D:\Work\FRICK-ELDY\osc_ubct`
 - Max Depth: none
 - Excludes: `.dart_tool, .git, .github, .gitignore, .idea, .metadata, .vscode, CHANGELOG.md, LICENSE, README.md, WorkspaceLayout.md, analysis_options.yaml, android, assets, bin, build, dev-log.md, dist, docs, ios, linux, macos, node_modules, out, pubspec.lock, pubspec.yaml, rust_builder, target, test, thirdparty, web, xtask`
@@ -17,7 +17,10 @@
 ### Dart - Flutter UI
 | Path | Lines | Status | Summary |
 |------|------:|:------:|---------|
-| [example/lib/main.dart](https://github.com/FRICK-ELDY/osc_ubct/blob/main/example/lib/main.dart) | 63 | 🟡 | (no summary) |
+| [example/lib/main.dart](https://github.com/FRICK-ELDY/osc_ubct/blob/main/example/lib/main.dart) | 18 | 🟢 | 立ち上げたらOSC Senderページを出す |
+| [example/lib/services/osc/osc_client.dart](https://github.com/FRICK-ELDY/osc_ubct/blob/main/example/lib/services/osc/osc_client.dart) | 28 | 🟢 | RawDatagramSocketでのUDP送信クライアント |
+| [example/lib/services/osc/osc_encoder.dart](https://github.com/FRICK-ELDY/osc_ubct/blob/main/example/lib/services/osc/osc_encoder.dart) | 39 | 🟢 | 最小限のOSCエンコード（/path ,type... + args） |
+| [example/lib/ui/osc_sender_page.dart](https://github.com/FRICK-ELDY/osc_ubct/blob/main/example/lib/ui/osc_sender_page.dart) | 168 | 🟠 | VRChat向けに /tracking/trackers/{i}/rotation を送るUI |
 
 ---
 
@@ -48,7 +51,13 @@ root/
 │  ├─ integration_test/
 │  │  └─ plugin_integration_test.dart
 │  ├─ lib/
-│  │  └─ main.dart
+│  │  ├─ main.dart — 立ち上げたらOSC Senderページを出す
+│  │  ├─ services/
+│  │  │  └─ osc/
+│  │  │     ├─ osc_client.dart — RawDatagramSocketでのUDP送信クライアント
+│  │  │     └─ osc_encoder.dart — 最小限のOSCエンコード（/path ,type... + args）
+│  │  └─ ui/
+│  │     └─ osc_sender_page.dart — VRChat向けに /tracking/trackers/{i}/rotation を送るUI
 │  └─ windows/
 │     ├─ CMakeLists.txt
 │     ├─ flutter/
