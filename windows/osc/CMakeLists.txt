@@ -36,8 +36,8 @@ target_include_directories(osc_lib PUBLIC
 # 未定義でもエラーにせず、見つかれば使うだけ。
 if(DEFINED FLUTTER_MANAGED_DIR)
   target_include_directories(osc_lib PRIVATE
-    "${FLUTTER_MANAGED_DIR}"
-    "${FLUTTER_MANAGED_DIR}/cpp_client_wrapper/include"
+    "${FLUTTER_MANAGED_DIR}/ephemeral"
+    "${FLUTTER_MANAGED_DIR}/ephemeral/cpp_client_wrapper/include"
   )
 endif()
 
