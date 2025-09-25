@@ -13,6 +13,11 @@ mixin HomePageView on State<HomePage>, _HomePageAPI {
       ),
       body: Column(
         children: [
+          Expanded(
+            child: MainPanel(
+              onUpdate: () => setState(() {}),
+            ),
+          ),
         ],
       ),
     );
