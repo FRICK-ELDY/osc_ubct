@@ -8,22 +8,27 @@
 
 namespace osc_ubct {
 
+using MethodResultValue = std::unique_ptr<flutter::MethodResult<flutter::EncodableValue>>;
+
 class OscUbctPlugin : public flutter::Plugin {
  public:
   static void RegisterWithRegistrar(flutter::PluginRegistrarWindows *registrar);
 
   OscUbctPlugin();
-
   virtual ~OscUbctPlugin();
 
-  // Disallow copy and assign.
   OscUbctPlugin(const OscUbctPlugin&) = delete;
   OscUbctPlugin& operator=(const OscUbctPlugin&) = delete;
 
-  // Called when a method is called on this plugin's channel from Dart.
-  void HandleMethodCall(
-      const flutter::MethodCall<flutter::EncodableValue> &method_call,
-      std::unique_ptr<flutter::MethodResult<flutter::EncodableValue>> result);
+  void HandleMethodCall(const flutter::MethodCall<flutter::EncodableValue> &call, MethodResultValue result);
+ private:
+  enum class Method {
+    kUnknown,
+    kStartSending,
+    kStopSending,
+  };
+
+  static Method GetMethodEnum(const std::string& method_name);
 };
 
 }  // namespace osc_ubct
