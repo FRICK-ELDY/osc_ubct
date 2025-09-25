@@ -1,6 +1,6 @@
 # Workspace Layout
 
-- Generated: 2025-09-25 15:25:28
+- Generated: 2025-09-25 16:21:20
 - Root: `D:\Work\FRICK-ELDY\osc_ubct`
 - Max Depth: none
 - Excludes: `.dart_tool, .git, .github, .gitignore, .idea, .metadata, .vscode, CHANGELOG.md, LICENSE, README.md, WorkspaceLayout.md, analysis_options.yaml, android, assets, bin, build, dev-log.md, dist, docs, ios, linux, macos, node_modules, out, pubspec.lock, pubspec.yaml, rust_builder, target, test, thirdparty, web, xtask`
@@ -114,6 +114,7 @@ root/
    │  └─ osc_ubct/
    │     └─ osc_ubct_plugin_c_api.h
    ├─ osc/
+   │  ├─ CMakeLists.txt
    │  ├─ interface/
    │  │  └─ handlers/
    │  │     ├─ common.hpp

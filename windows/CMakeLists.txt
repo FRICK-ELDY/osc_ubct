@@ -48,6 +48,11 @@ target_include_directories(${PLUGIN_NAME} INTERFACE
   "${CMAKE_CURRENT_SOURCE_DIR}/include")
 target_link_libraries(${PLUGIN_NAME} PRIVATE flutter flutter_wrapper_plugin)
 
+# ---- Add native OSC (windows/osc) and link it ----
+# Build osc_lib defined in windows/osc/CMakeLists.txt
+add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/osc")
+target_link_libraries(${PLUGIN_NAME} PRIVATE osc_lib)
+
 # List of absolute paths to libraries that should be bundled with the plugin.
 # This list could contain prebuilt libraries, or libraries created by an
 # external build triggered from this build file.
@@ -88,6 +93,11 @@ apply_standard_settings(${TEST_RUNNER})
 target_include_directories(${TEST_RUNNER} PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}")
 target_link_libraries(${TEST_RUNNER} PRIVATE flutter_wrapper_plugin)
 target_link_libraries(${TEST_RUNNER} PRIVATE gtest_main gmock)
+
+# NOTE: The test binary builds the same plugin sources that include native OSC
+# handlers, so it must also link against osc_lib.
+target_link_libraries(${TEST_RUNNER} PRIVATE osc_lib)
+
 # flutter_wrapper_plugin has link dependencies on the Flutter DLL.
 add_custom_command(TARGET ${TEST_RUNNER} POST_BUILD
   COMMAND ${CMAKE_COMMAND} -E copy_if_different
