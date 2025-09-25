@@ -10,7 +10,7 @@
 #include <memory>
 #include <sstream>
 
-// #include "osc/interface/handlers/osc_connect_handlers.hpp"
+#include "osc/interface/handlers/osc_connect_handlers.hpp"
 
 namespace osc_ubct {
   using flutter::EncodableValue;
@@ -44,10 +44,10 @@ namespace osc_ubct {
     //const auto* args = std::get_if<EncodableMap>(call.arguments());
     switch (method) {
       case Method::kStartSending: 
-        //osc::connect::StartSending(std::move(result)); 
+        osc::connect::StartSending(std::move(result)); 
         break;
       case Method::kStopSending: 
-        //osc::connect::StopSending(std::move(result));
+        osc::connect::StopSending(std::move(result));
         break;
       default:
           result->NotImplemented();
