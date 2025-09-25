@@ -1,6 +1,6 @@
 # Workspace Layout
 
-- Generated: 2025-09-24 20:17:44
+- Generated: 2025-09-25 13:49:24
 - Root: `D:\Work\FRICK-ELDY\osc_ubct`
 - Max Depth: none
 - Excludes: `.dart_tool, .git, .github, .gitignore, .idea, .metadata, .vscode, CHANGELOG.md, LICENSE, README.md, WorkspaceLayout.md, analysis_options.yaml, android, assets, bin, build, dev-log.md, dist, docs, ios, linux, macos, node_modules, out, pubspec.lock, pubspec.yaml, rust_builder, target, test, thirdparty, web, xtask`
@@ -17,10 +17,11 @@
 ### Dart - Flutter UI
 | Path | Lines | Status | Summary |
 |------|------:|:------:|---------|
-| [example/lib/main.dart](https://github.com/FRICK-ELDY/osc_ubct/blob/main/example/lib/main.dart) | 18 | 🟢 | 立ち上げたらOSC Senderページを出す |
-| [example/lib/services/osc/osc_client.dart](https://github.com/FRICK-ELDY/osc_ubct/blob/main/example/lib/services/osc/osc_client.dart) | 28 | 🟢 | RawDatagramSocketでのUDP送信クライアント |
-| [example/lib/services/osc/osc_encoder.dart](https://github.com/FRICK-ELDY/osc_ubct/blob/main/example/lib/services/osc/osc_encoder.dart) | 39 | 🟢 | 最小限のOSCエンコード（/path ,type... + args） |
-| [example/lib/ui/osc_sender_page.dart](https://github.com/FRICK-ELDY/osc_ubct/blob/main/example/lib/ui/osc_sender_page.dart) | 168 | 🟠 | VRChat向けに /tracking/trackers/{i}/rotation を送るUI |
+| [example/lib/main.dart](https://github.com/FRICK-ELDY/osc_ubct/blob/main/example/lib/main.dart) | 16 | 🟢 | アプリのエントリポイント。runApp と最初のルーティング/DI を定義。 |
+| [example/lib/ui/home_page/home_page.dart](https://github.com/FRICK-ELDY/osc_ubct/blob/main/example/lib/ui/home_page/home_page.dart) | 21 | 🟢 | HomePage 親（library名方式で state / actions / view を分離） |
+| [example/lib/ui/home_page/home_page_actions.dart](https://github.com/FRICK-ELDY/osc_ubct/blob/main/example/lib/ui/home_page/home_page_actions.dart) | 11 | 🟢 | HomePage の操作ロジック（カメラ追加/削除、ログ表示切替、OpenGL起動等） |
+| [example/lib/ui/home_page/home_page_state.dart](https://github.com/FRICK-ELDY/osc_ubct/blob/main/example/lib/ui/home_page/home_page_state.dart) | 19 | 🟢 | HomePage の状態（コントローラ群・ログ表示状態など） |
+| [example/lib/ui/home_page/home_page_view.dart](https://github.com/FRICK-ELDY/osc_ubct/blob/main/example/lib/ui/home_page/home_page_view.dart) | 20 | 🟢 | HomePage の UI 構築（Scaffold/メニュー/メイン&ログパネル配置） |
 
 ---
 
@@ -51,13 +52,13 @@ root/
 │  ├─ integration_test/
 │  │  └─ plugin_integration_test.dart
 │  ├─ lib/
-│  │  ├─ main.dart — 立ち上げたらOSC Senderページを出す
-│  │  ├─ services/
-│  │  │  └─ osc/
-│  │  │     ├─ osc_client.dart — RawDatagramSocketでのUDP送信クライアント
-│  │  │     └─ osc_encoder.dart — 最小限のOSCエンコード（/path ,type... + args）
+│  │  ├─ main.dart — アプリのエントリポイント。runApp と最初のルーティング/DI を定義。
 │  │  └─ ui/
-│  │     └─ osc_sender_page.dart — VRChat向けに /tracking/trackers/{i}/rotation を送るUI
+│  │     └─ home_page/
+│  │        ├─ home_page.dart — HomePage 親（library名方式で state / actions / view を分離）
+│  │        ├─ home_page_actions.dart — HomePage の操作ロジック（カメラ追加/削除、ログ表示切替、OpenGL起動等）
+│  │        ├─ home_page_state.dart — HomePage の状態（コントローラ群・ログ表示状態など）
+│  │        └─ home_page_view.dart — HomePage の UI 構築（Scaffold/メニュー/メイン&ログパネル配置）
 │  └─ windows/
 │     ├─ CMakeLists.txt
 │     ├─ flutter/
