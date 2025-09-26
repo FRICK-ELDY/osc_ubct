@@ -1,21 +1,23 @@
+//! summary: ファサード（公開API; 構造体は core 側の定義を利用）
+//! path: windows/osc/osc_sender.hpp
 #pragma once
 
+#include <string>
 #include "interface/handlers/common.hpp"
+#include "core/sender_settings.hpp"
 
 namespace osc_ubct::osc {
-void EnableOSCSending(bool enable); 
+
+// 送信 ON/OFF（true: 有効 / false: 無効）
+void EnableOSCSending(bool enable);
+
+// enable時のみ defaultAddress に 1回送信（デモ）
 void SendOSCMessageIfEnabled();
-// Flutterから渡された設定を適用する
+
+// Flutter から渡された設定を適用
 void ApplySettingsFromFlutter(const EncodableMap& args);
 
-// 内部的に保持している設定を取得したい場合用
-struct SenderSettings {
-  std::string host;
-  int port;
-  std::string defaultAddress;
-  bool sendContinuously;
-  double rateLimitHz;
-};
+// 現在の設定を取得（coreの実体をそのまま返す）
 const SenderSettings& GetSenderSettings();
 
-}
+} // namespace osc_ubct::osc
