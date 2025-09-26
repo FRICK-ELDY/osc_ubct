@@ -26,14 +26,17 @@ mixin OscMessagePanelActions on State<OscMessagePanel>
       debugPrint('[osc] "$method" failed: $e');
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('OSCエラー: $method')),
+          SnackBar(content: Text('OSC error: $method')),
         );
       }
     }
   }
 
   Future<void> _pushMessage() async {
-    await _invoke('osc.updateMessage', _st.buildWireMessage());
+    final m = _st.buildWireMessage();
+    // デバッグしやすいように出力
+    debugPrint('[osc] updateMessage -> $m');
+    await _invoke('osc.updateMessage', m);
   }
 
   @override
@@ -44,12 +47,12 @@ mixin OscMessagePanelActions on State<OscMessagePanel>
 
   @override
   Future<void> changeSuffix(String s) async {
-    // ★ 入力中は controller を書き換えない（1文字しか入らない問題の原因）
+    // 入力中は controller を書き換えない（1文字しか入らない問題回避）
     final raw = s.trim();
     final normalized = raw.isEmpty ? '/' : (raw.startsWith('/') ? raw : '/$raw');
 
     setState(() {
-      _st.suffix = normalized; // 表示は onEditingComplete 側で同期（任意実装）
+      _st.suffix = normalized;
     });
 
     await _pushMessage();
@@ -57,8 +60,8 @@ mixin OscMessagePanelActions on State<OscMessagePanel>
 
   @override
   Future<void> sendOnce() async {
-    // 単発送信：連結済みアドレスで即送信
-    await _invoke('osc.sendMessage', _st.buildWireMessage());
+    // 単発送信（現在のメッセージ定義を即送）
+    await _invoke('osc.sendMessageNow', _st.buildWireMessage());
   }
 
   // ===== 引数操作 =====
@@ -145,7 +148,6 @@ mixin OscMessagePanelActions on State<OscMessagePanel>
     if (min != null) arg.min = min;
     if (max != null) arg.max = max;
 
-    // 範囲更新に合わせて値をクランプ
     final lo = arg.min ?? 0.0;
     final hi = arg.max ?? 1.0;
     arg.value = (arg.value as double).clamp(lo, hi);

@@ -1,6 +1,6 @@
 # Workspace Layout
 
-- Generated: 2025-09-26 14:27:48
+- Generated: 2025-09-27 00:11:44
 - Root: `D:\Work\FRICK-ELDY\osc_ubct`
 - Max Depth: none
 - Excludes: `.dart_tool, .git, .github, .gitignore, .idea, .metadata, .vscode, CHANGELOG.md, LICENSE, README.md, WorkspaceLayout.md, analysis_options.yaml, android, assets, bin, build, dev-log.md, dist, docs, ios, linux, macos, node_modules, out, pubspec.lock, pubspec.yaml, rust_builder, target, test, thirdparty, web, xtask`
@@ -29,8 +29,8 @@
 | [example/lib/ui/main_panel/main_panel_view.dart](https://github.com/FRICK-ELDY/osc_ubct/blob/main/example/lib/ui/main_panel/main_panel_view.dart) | 28 | 🟢 | MainPanel の UI（OSC送信パネル） |
 | [example/lib/ui/osc_message_panel/osc_message_list.dart](https://github.com/FRICK-ELDY/osc_ubct/blob/main/example/lib/ui/osc_message_panel/osc_message_list.dart) | 90 | 🟡 | 複数メッセージ行の管理（追加/削除） |
 | [example/lib/ui/osc_message_panel/osc_message_panel.dart](https://github.com/FRICK-ELDY/osc_ubct/blob/main/example/lib/ui/osc_message_panel/osc_message_panel.dart) | 33 | 🟢 | メッセージ送信行（[有効] [ (default +) アドレス ] [送信] ＋ 引数拡張） |
-| [example/lib/ui/osc_message_panel/osc_message_panel_actions.dart](https://github.com/FRICK-ELDY/osc_ubct/blob/main/example/lib/ui/osc_message_panel/osc_message_panel_actions.dart) | 156 | 🟠 | Actions（有効／アドレス／引数編集・送信をMethodChannelと連動） |
-| [example/lib/ui/osc_message_panel/osc_message_panel_state.dart](https://github.com/FRICK-ELDY/osc_ubct/blob/main/example/lib/ui/osc_message_panel/osc_message_panel_state.dart) | 106 | 🟠 | State／モデル（拡張引数。floatはmin/max保持） |
+| [example/lib/ui/osc_message_panel/osc_message_panel_actions.dart](https://github.com/FRICK-ELDY/osc_ubct/blob/main/example/lib/ui/osc_message_panel/osc_message_panel_actions.dart) | 158 | 🟠 | Actions（有効／アドレス／引数編集・送信をMethodChannelと連動） |
+| [example/lib/ui/osc_message_panel/osc_message_panel_state.dart](https://github.com/FRICK-ELDY/osc_ubct/blob/main/example/lib/ui/osc_message_panel/osc_message_panel_state.dart) | 126 | 🟠 | State／モデル（拡張引数。floatはmin/max保持＋起動時に1回updateMessage送信） |
 | [example/lib/ui/osc_message_panel/osc_message_panel_view.dart](https://github.com/FRICK-ELDY/osc_ubct/blob/main/example/lib/ui/osc_message_panel/osc_message_panel_view.dart) | 279 | 🔴 | View（上段1行：[toggle] [ (default +) アドレス ] [送信]／下段：引数編集UI） |
 | [example/lib/ui/osc_sender_panel/osc_sender_panel.dart](https://github.com/FRICK-ELDY/osc_ubct/blob/main/example/lib/ui/osc_sender_panel/osc_sender_panel.dart) | 23 | 🟢 | OSC送信パネル |
 | [example/lib/ui/osc_sender_panel/osc_sender_panel_actions.dart](https://github.com/FRICK-ELDY/osc_ubct/blob/main/example/lib/ui/osc_sender_panel/osc_sender_panel_actions.dart) | 54 | 🟡 | 操作ロジック（送信On/Off, 連続送信切替, レート変更） |
@@ -53,13 +53,21 @@
 | Path | Lines | Status | Summary |
 |------|------:|:------:|---------|
 | [windows/include/osc_ubct/osc_ubct_plugin_c_api.h](https://github.com/FRICK-ELDY/osc_ubct/blob/main/windows/include/osc_ubct/osc_ubct_plugin_c_api.h) | 23 | 🟢 | (no summary) |
+| [windows/osc/core/message_store.cpp](https://github.com/FRICK-ELDY/osc_ubct/blob/main/windows/osc/core/message_store.cpp) | 111 | 🟠 | (no summary) |
+| [windows/osc/core/message_store.hpp](https://github.com/FRICK-ELDY/osc_ubct/blob/main/windows/osc/core/message_store.hpp) | 26 | 🟢 | (no summary) |
+| [windows/osc/core/osc_transport.cpp](https://github.com/FRICK-ELDY/osc_ubct/blob/main/windows/osc/core/osc_transport.cpp) | 76 | 🟡 | (no summary) |
+| [windows/osc/core/osc_transport.hpp](https://github.com/FRICK-ELDY/osc_ubct/blob/main/windows/osc/core/osc_transport.hpp) | 26 | 🟢 | (no summary) |
+| [windows/osc/core/sender_settings.cpp](https://github.com/FRICK-ELDY/osc_ubct/blob/main/windows/osc/core/sender_settings.cpp) | 82 | 🟡 | (no summary) |
+| [windows/osc/core/sender_settings.hpp](https://github.com/FRICK-ELDY/osc_ubct/blob/main/windows/osc/core/sender_settings.hpp) | 24 | 🟢 | (no summary) |
+| [windows/osc/core/sender_worker.cpp](https://github.com/FRICK-ELDY/osc_ubct/blob/main/windows/osc/core/sender_worker.cpp) | 87 | 🟡 | (no summary) |
+| [windows/osc/core/sender_worker.hpp](https://github.com/FRICK-ELDY/osc_ubct/blob/main/windows/osc/core/sender_worker.hpp) | 10 | 🟢 | (no summary) |
 | [windows/osc/interface/handlers/common.hpp](https://github.com/FRICK-ELDY/osc_ubct/blob/main/windows/osc/interface/handlers/common.hpp) | 11 | 🟢 | (no summary) |
-| [windows/osc/interface/handlers/osc_connect_handlers.cpp](https://github.com/FRICK-ELDY/osc_ubct/blob/main/windows/osc/interface/handlers/osc_connect_handlers.cpp) | 20 | 🟢 | (no summary) |
-| [windows/osc/interface/handlers/osc_connect_handlers.hpp](https://github.com/FRICK-ELDY/osc_ubct/blob/main/windows/osc/interface/handlers/osc_connect_handlers.hpp) | 12 | 🟢 | (no summary) |
-| [windows/osc/osc_sender.cpp](https://github.com/FRICK-ELDY/osc_ubct/blob/main/windows/osc/osc_sender.cpp) | 76 | 🟡 | (no summary) |
-| [windows/osc/osc_sender.hpp](https://github.com/FRICK-ELDY/osc_ubct/blob/main/windows/osc/osc_sender.hpp) | 21 | 🟢 | (no summary) |
-| [windows/osc_ubct_plugin.cpp](https://github.com/FRICK-ELDY/osc_ubct/blob/main/windows/osc_ubct_plugin.cpp) | 63 | 🟡 | (no summary) |
-| [windows/osc_ubct_plugin.h](https://github.com/FRICK-ELDY/osc_ubct/blob/main/windows/osc_ubct_plugin.h) | 37 | 🟢 | (no summary) |
+| [windows/osc/interface/handlers/osc_connect_handlers.cpp](https://github.com/FRICK-ELDY/osc_ubct/blob/main/windows/osc/interface/handlers/osc_connect_handlers.cpp) | 145 | 🟠 | (no summary) |
+| [windows/osc/interface/handlers/osc_connect_handlers.hpp](https://github.com/FRICK-ELDY/osc_ubct/blob/main/windows/osc/interface/handlers/osc_connect_handlers.hpp) | 14 | 🟢 | (no summary) |
+| [windows/osc/osc_sender.cpp](https://github.com/FRICK-ELDY/osc_ubct/blob/main/windows/osc/osc_sender.cpp) | 26 | 🟢 | (no summary) |
+| [windows/osc/osc_sender.hpp](https://github.com/FRICK-ELDY/osc_ubct/blob/main/windows/osc/osc_sender.hpp) | 10 | 🟢 | (no summary) |
+| [windows/osc_ubct_plugin.cpp](https://github.com/FRICK-ELDY/osc_ubct/blob/main/windows/osc_ubct_plugin.cpp) | 74 | 🟡 | (no summary) |
+| [windows/osc_ubct_plugin.h](https://github.com/FRICK-ELDY/osc_ubct/blob/main/windows/osc_ubct_plugin.h) | 39 | 🟢 | (no summary) |
 | [windows/osc_ubct_plugin_c_api.cpp](https://github.com/FRICK-ELDY/osc_ubct/blob/main/windows/osc_ubct_plugin_c_api.cpp) | 12 | 🟢 | (no summary) |
 
 ## Directory / File Tree
@@ -89,7 +97,7 @@ root/
 │  │     │  ├─ osc_message_list.dart — 複数メッセージ行の管理（追加/削除）
 │  │     │  ├─ osc_message_panel.dart — メッセージ送信行（[有効] [ (default +) アドレス ] [送信] ＋ 引数拡張）
 │  │     │  ├─ osc_message_panel_actions.dart — Actions（有効／アドレス／引数編集・送信をMethodChannelと連動）
-│  │     │  ├─ osc_message_panel_state.dart — State／モデル（拡張引数。floatはmin/max保持）
+│  │     │  ├─ osc_message_panel_state.dart — State／モデル（拡張引数。floatはmin/max保持＋起動時に1回updateMessage送信）
 │  │     │  └─ osc_message_panel_view.dart — View（上段1行：[toggle] [ (default +) アドレス ] [送信]／下段：引数編集UI）
 │  │     └─ osc_sender_panel/
 │  │        ├─ osc_sender_panel.dart — OSC送信パネル
@@ -126,6 +134,15 @@ root/
    │     └─ osc_ubct_plugin_c_api.h
    ├─ osc/
    │  ├─ CMakeLists.txt
+   │  ├─ core/
+   │  │  ├─ message_store.cpp
+   │  │  ├─ message_store.hpp
+   │  │  ├─ osc_transport.cpp
+   │  │  ├─ osc_transport.hpp
+   │  │  ├─ sender_settings.cpp
+   │  │  ├─ sender_settings.hpp
+   │  │  ├─ sender_worker.cpp
+   │  │  └─ sender_worker.hpp
    │  ├─ interface/
    │  │  └─ handlers/
    │  │     ├─ common.hpp
