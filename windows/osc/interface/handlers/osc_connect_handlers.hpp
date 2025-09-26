@@ -8,5 +8,7 @@ namespace osc_ubct::osc {
     void UpdateSettings(const EncodableMap& args, MethodResultValue result);
     void StartSending(MethodResultValue result);
     void StopSending(MethodResultValue result);
+    void UpdateMessage(const EncodableMap& args, MethodResultValue result);
+    void SendMessageNow(const EncodableMap& args, MethodResultValue result);
   }
 }

@@ -1,4 +1,3 @@
-//! summary: 設定の保持・適用・正規化（実装）
 //! path: windows/osc/core/sender_settings.cpp
 #include "sender_settings.hpp"
 
@@ -36,12 +35,10 @@ namespace osc_ubct::osc::core {
   void ApplySettingsFromFlutter(const EncodableMap& args) {
     std::lock_guard<std::mutex> lk(g_mu);
 
-    // host
     if (const auto* s = get_if_map<std::string>(args, "host")) {
       if (!s->empty()) g_settings.host = *s;
     }
 
-    // port（int64_t / int32_t / int に対応）
     if (const auto* p64 = get_if_map<int64_t>(args, "port")) {
       g_settings.port = static_cast<int>(*p64);
     } else if (const auto* p32 = get_if_map<int32_t>(args, "port")) {
@@ -50,17 +47,14 @@ namespace osc_ubct::osc::core {
       g_settings.port = *pi;
     }
 
-    // defaultAddress 正規化
     if (const auto* a = get_if_map<std::string>(args, "defaultAddress")) {
       g_settings.defaultAddress = normalize_addr(*a);
     }
 
-    // sendContinuously
     if (const auto* b = get_if_map<bool>(args, "sendContinuously")) {
       g_settings.sendContinuously = *b;
     }
 
-    // rateLimitHz（1〜240; int/double 対応）
     if (const auto* hz_d = get_if_map<double>(args, "rateLimitHz")) {
       g_settings.rateLimitHz = std::clamp(*hz_d, 1.0, 240.0);
     } else if (const auto* hz_i64 = get_if_map<int64_t>(args, "rateLimitHz")) {

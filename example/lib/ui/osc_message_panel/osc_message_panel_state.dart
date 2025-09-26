@@ -1,4 +1,4 @@
-//! summary: State／モデル（拡張引数。floatはmin/max保持）
+//! summary: State／モデル（拡張引数。floatはmin/max保持＋起動時に1回updateMessage送信）
 //! path: example/lib/ui/osc_message_panel/osc_message_panel_state.dart
 
 part of ui.osc_message_panel;
@@ -32,7 +32,6 @@ class MsgArg {
   Map<String, dynamic> toWire() {
     switch (type) {
       case MsgArgType.float:
-        // min/max はオプションで同梱
         final lo = min ?? 0.0;
         final hi = max ?? 1.0;
         final dv = (value as double).clamp(lo, hi);
@@ -54,10 +53,10 @@ class MsgArg {
 
 class OscMessagePanelState extends State<OscMessagePanel>
     with OscMessagePanelActions, OscMessagePanelView {
-  // 行の基本
+  // enabled is true by default
   bool enabled = true;
 
-  /// baseAddress に連結する相対（suffix）を入力する
+  /// baseAddress に連結する相対（suffix）
   String suffix = '/v1';
   late final TextEditingController addrCtl = TextEditingController(text: suffix);
 
@@ -68,6 +67,26 @@ class OscMessagePanelState extends State<OscMessagePanel>
 
   /// base + suffix を結合した完全アドレス
   String get fullAddress => _joinAddress(widget.baseAddress, suffix);
+
+  @override
+  void initState() {
+    super.initState();
+    // 初期suffix（初期値）を反映
+    suffix = widget.initialSuffix;
+    addrCtl.text = suffix;
+
+    // 画面が構築された直後に1回、ネイティブへ登録（連続送信ワーカーが拾えるように）
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      try {
+        // _pushMessage は mixin 側の private なので直接呼べないため、
+        // public API を通してすべてのフィールドを1回送る。
+        await _osc_ubct.invokeMethod('osc.updateMessage', buildWireMessage());
+        debugPrint('[osc] init push: ${buildWireMessage()}');
+      } catch (e) {
+        debugPrint('[osc] init push failed: $e');
+      }
+    });
+  }
 
   @override
   void dispose() {
@@ -85,9 +104,10 @@ class OscMessagePanelState extends State<OscMessagePanel>
   // ネイティブに渡すメッセージ定義（完全アドレスも同梱）
   Map<String, dynamic> buildWireMessage() {
     return {
+      'id': widget.messageId,
       'enabled': enabled,
       'address': fullAddress, // 連結後
-      'suffix': suffix,       // 参考にサフィックスも付ける
+      'suffix': suffix,       // 参考情報
       'args': args.map((e) => e.toWire()).toList(),
     };
   }
