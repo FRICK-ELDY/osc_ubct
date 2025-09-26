@@ -17,6 +17,7 @@ mixin MainPanelView on State<MainPanel>, _MainPanelAPI {
               children: const [
                 OscSenderPanel(),
                 SizedBox(height: 16),
+                OscMessageList(baseAddress: '/ubct'),
               ],
             ),
           ),
