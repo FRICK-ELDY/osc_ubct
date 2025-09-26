@@ -1,4 +1,4 @@
-//! summary: テスト用OSC送信パネル（library名方式で state / actions / view を分離）
+//! summary: OSC送信パネル
 //! path: example/lib/ui/osc_sender_panel/osc_sender_panel.dart
 
 library ui.osc_sender_panel;
@@ -12,7 +12,7 @@ part 'osc_sender_panel_state.dart';
 part 'osc_sender_panel_actions.dart';
 part 'osc_sender_panel_view.dart';
 
-/// ネイティブ連携用 MethodChannel（同ライブラリ内で共有）
+// ネイティブ連携用 MethodChannel
 const MethodChannel _osc_ubct = MethodChannel('osc_ubct');
 
 class OscSenderPanel extends StatefulWidget {
