@@ -32,6 +32,7 @@ namespace osc_ubct {
 
   OscUbctPlugin::Method OscUbctPlugin::GetMethodEnum(const std::string& method_name) {
     static const std::unordered_map<std::string, Method> method_map = {
+      {"osc.updateSettings", Method::kUpdateSettings},
       {"osc.startSending", Method::kStartSending},
       {"osc.stopSending", Method::kStopSending},
     };
@@ -41,8 +42,13 @@ namespace osc_ubct {
 
   void OscUbctPlugin::HandleMethodCall(const flutter::MethodCall<EncodableValue> &call, MethodResultValue result) {
     Method method = GetMethodEnum(call.method_name());
-    //const auto* args = std::get_if<EncodableMap>(call.arguments());
+    const auto* args = std::get_if<EncodableMap>(call.arguments());
     switch (method) {
+      case Method::kUpdateSettings: 
+        if (args) osc::connect::UpdateSettings(*args, std::move(result));
+        else result->Error("invalid_arguments", "args missing");
+        break;
+        break;
       case Method::kStartSending: 
         osc::connect::StartSending(std::move(result)); 
         break;

@@ -1,6 +1,6 @@
 # Workspace Layout
 
-- Generated: 2025-09-26 11:38:37
+- Generated: 2025-09-26 12:07:16
 - Root: `D:\Work\FRICK-ELDY\osc_ubct`
 - Max Depth: none
 - Excludes: `.dart_tool, .git, .github, .gitignore, .idea, .metadata, .vscode, CHANGELOG.md, LICENSE, README.md, WorkspaceLayout.md, analysis_options.yaml, android, assets, bin, build, dev-log.md, dist, docs, ios, linux, macos, node_modules, out, pubspec.lock, pubspec.yaml, rust_builder, target, test, thirdparty, web, xtask`
@@ -48,13 +48,13 @@
 | Path | Lines | Status | Summary |
 |------|------:|:------:|---------|
 | [windows/include/osc_ubct/osc_ubct_plugin_c_api.h](https://github.com/FRICK-ELDY/osc_ubct/blob/main/windows/include/osc_ubct/osc_ubct_plugin_c_api.h) | 23 | 🟢 | (no summary) |
-| [windows/osc/interface/handlers/common.hpp](https://github.com/FRICK-ELDY/osc_ubct/blob/main/windows/osc/interface/handlers/common.hpp) | 10 | 🟢 | (no summary) |
-| [windows/osc/interface/handlers/osc_connect_handlers.cpp](https://github.com/FRICK-ELDY/osc_ubct/blob/main/windows/osc/interface/handlers/osc_connect_handlers.cpp) | 16 | 🟢 | (no summary) |
-| [windows/osc/interface/handlers/osc_connect_handlers.hpp](https://github.com/FRICK-ELDY/osc_ubct/blob/main/windows/osc/interface/handlers/osc_connect_handlers.hpp) | 10 | 🟢 | (no summary) |
-| [windows/osc/osc_sender.cpp](https://github.com/FRICK-ELDY/osc_ubct/blob/main/windows/osc/osc_sender.cpp) | 27 | 🟢 | (no summary) |
-| [windows/osc/osc_sender.hpp](https://github.com/FRICK-ELDY/osc_ubct/blob/main/windows/osc/osc_sender.hpp) | 8 | 🟢 | (no summary) |
-| [windows/osc_ubct_plugin.cpp](https://github.com/FRICK-ELDY/osc_ubct/blob/main/windows/osc_ubct_plugin.cpp) | 57 | 🟡 | (no summary) |
-| [windows/osc_ubct_plugin.h](https://github.com/FRICK-ELDY/osc_ubct/blob/main/windows/osc_ubct_plugin.h) | 36 | 🟢 | (no summary) |
+| [windows/osc/interface/handlers/common.hpp](https://github.com/FRICK-ELDY/osc_ubct/blob/main/windows/osc/interface/handlers/common.hpp) | 11 | 🟢 | (no summary) |
+| [windows/osc/interface/handlers/osc_connect_handlers.cpp](https://github.com/FRICK-ELDY/osc_ubct/blob/main/windows/osc/interface/handlers/osc_connect_handlers.cpp) | 20 | 🟢 | (no summary) |
+| [windows/osc/interface/handlers/osc_connect_handlers.hpp](https://github.com/FRICK-ELDY/osc_ubct/blob/main/windows/osc/interface/handlers/osc_connect_handlers.hpp) | 12 | 🟢 | (no summary) |
+| [windows/osc/osc_sender.cpp](https://github.com/FRICK-ELDY/osc_ubct/blob/main/windows/osc/osc_sender.cpp) | 76 | 🟡 | (no summary) |
+| [windows/osc/osc_sender.hpp](https://github.com/FRICK-ELDY/osc_ubct/blob/main/windows/osc/osc_sender.hpp) | 21 | 🟢 | (no summary) |
+| [windows/osc_ubct_plugin.cpp](https://github.com/FRICK-ELDY/osc_ubct/blob/main/windows/osc_ubct_plugin.cpp) | 63 | 🟡 | (no summary) |
+| [windows/osc_ubct_plugin.h](https://github.com/FRICK-ELDY/osc_ubct/blob/main/windows/osc_ubct_plugin.h) | 37 | 🟢 | (no summary) |
 | [windows/osc_ubct_plugin_c_api.cpp](https://github.com/FRICK-ELDY/osc_ubct/blob/main/windows/osc_ubct_plugin_c_api.cpp) | 12 | 🟢 | (no summary) |
 
 ## Directory / File Tree
