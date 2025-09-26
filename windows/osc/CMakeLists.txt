@@ -6,8 +6,9 @@ add_library(osc_lib STATIC)
 
 # --- あなたの実装ソース（必要最小限） ---
 file(GLOB OSC_CPP            "${CMAKE_CURRENT_SOURCE_DIR}/*.cpp")
+file(GLOB OSC_CORE_CPP       "${CMAKE_CURRENT_SOURCE_DIR}/core/*.cpp")
 file(GLOB OSC_HANDLERS_CPP   "${CMAKE_CURRENT_SOURCE_DIR}/interface/handlers/*.cpp")
-target_sources(osc_lib PRIVATE ${OSC_CPP} ${OSC_HANDLERS_CPP})
+target_sources(osc_lib PRIVATE ${OSC_CPP} ${OSC_CORE_CPP} ${OSC_HANDLERS_CPP})
 
 # --- oscpack を同梱ビルド（固定パス：windows/thirdparty/oscpack） ---
 # 例: windows/thirdparty/oscpack/osc/OscOutboundPacketStream.cpp
@@ -44,7 +45,7 @@ endif()
 # C++17 / MSVC オプション（最小）
 target_compile_features(osc_lib PUBLIC cxx_std_17)
 if (MSVC)
-  target_compile_options(osc_lib PRIVATE /Zc:__cplusplus)
+  target_compile_options(osc_lib PRIVATE /Zc:__cplusplus /utf-8)
 endif()
 
 # リンク（oscpack が使用する Windows 系のみ）
