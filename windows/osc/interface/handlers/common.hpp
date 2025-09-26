@@ -1,3 +1,4 @@
+//! path: windows/osc/interface/handlers/common.hpp
 #pragma once
 
 #include <flutter/method_channel.h>

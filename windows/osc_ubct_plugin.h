@@ -24,6 +24,7 @@ class OscUbctPlugin : public flutter::Plugin {
  private:
   enum class Method {
     kUnknown,
+    kUpdateSettings,
     kStartSending,
     kStopSending,
   };
