@@ -1,6 +1,6 @@
 # Workspace Layout
 
-- Generated: 2025-09-25 16:21:20
+- Generated: 2025-09-26 11:38:37
 - Root: `D:\Work\FRICK-ELDY\osc_ubct`
 - Max Depth: none
 - Excludes: `.dart_tool, .git, .github, .gitignore, .idea, .metadata, .vscode, CHANGELOG.md, LICENSE, README.md, WorkspaceLayout.md, analysis_options.yaml, android, assets, bin, build, dev-log.md, dist, docs, ios, linux, macos, node_modules, out, pubspec.lock, pubspec.yaml, rust_builder, target, test, thirdparty, web, xtask`
@@ -27,10 +27,10 @@
 | [example/lib/ui/main_panel/main_panel_actions.dart](https://github.com/FRICK-ELDY/osc_ubct/blob/main/example/lib/ui/main_panel/main_panel_actions.dart) | 14 | 🟢 | MainPanel の操作系（外部コールバックを安全にラップ） |
 | [example/lib/ui/main_panel/main_panel_state.dart](https://github.com/FRICK-ELDY/osc_ubct/blob/main/example/lib/ui/main_panel/main_panel_state.dart) | 9 | 🟢 | MainPanel の State（ローカル状態は持たず、処理/描画は mixin に委譲） |
 | [example/lib/ui/main_panel/main_panel_view.dart](https://github.com/FRICK-ELDY/osc_ubct/blob/main/example/lib/ui/main_panel/main_panel_view.dart) | 27 | 🟢 | MainPanel の UI（OSC送信パネル） |
-| [example/lib/ui/osc_sender_panel/osc_sender_panel.dart](https://github.com/FRICK-ELDY/osc_ubct/blob/main/example/lib/ui/osc_sender_panel/osc_sender_panel.dart) | 23 | 🟢 | テスト用OSC送信パネル（library名方式で state / actions / view を分離） |
-| [example/lib/ui/osc_sender_panel/osc_sender_panel_actions.dart](https://github.com/FRICK-ELDY/osc_ubct/blob/main/example/lib/ui/osc_sender_panel/osc_sender_panel_actions.dart) | 25 | 🟢 | 送信ON/OFFトグルなどの操作ロジック（MethodChannel連携） |
-| [example/lib/ui/osc_sender_panel/osc_sender_panel_state.dart](https://github.com/FRICK-ELDY/osc_ubct/blob/main/example/lib/ui/osc_sender_panel/osc_sender_panel_state.dart) | 12 | 🟢 | 送信ON/OFF状態などの State。本体は mixin に委譲。 |
-| [example/lib/ui/osc_sender_panel/osc_sender_panel_view.dart](https://github.com/FRICK-ELDY/osc_ubct/blob/main/example/lib/ui/osc_sender_panel/osc_sender_panel_view.dart) | 27 | 🟢 | UI構築（InfoCard／スイッチのみのシンプルビュー） |
+| [example/lib/ui/osc_sender_panel/osc_sender_panel.dart](https://github.com/FRICK-ELDY/osc_ubct/blob/main/example/lib/ui/osc_sender_panel/osc_sender_panel.dart) | 23 | 🟢 | OSC送信パネル |
+| [example/lib/ui/osc_sender_panel/osc_sender_panel_actions.dart](https://github.com/FRICK-ELDY/osc_ubct/blob/main/example/lib/ui/osc_sender_panel/osc_sender_panel_actions.dart) | 54 | 🟡 | 操作ロジック（送信On/Off, 連続送信切替, レート変更） |
+| [example/lib/ui/osc_sender_panel/osc_sender_panel_state.dart](https://github.com/FRICK-ELDY/osc_ubct/blob/main/example/lib/ui/osc_sender_panel/osc_sender_panel_state.dart) | 73 | 🟡 | State（フォーム＋送信設定管理） |
+| [example/lib/ui/osc_sender_panel/osc_sender_panel_view.dart](https://github.com/FRICK-ELDY/osc_ubct/blob/main/example/lib/ui/osc_sender_panel/osc_sender_panel_view.dart) | 100 | 🟡 | UI構築（フォーム＋送信On/Off） |
 
 ---
 
@@ -81,10 +81,10 @@ root/
 │  │     │  ├─ main_panel_state.dart — MainPanel の State（ローカル状態は持たず、処理/描画は mixin に委譲）
 │  │     │  └─ main_panel_view.dart — MainPanel の UI（OSC送信パネル）
 │  │     └─ osc_sender_panel/
-│  │        ├─ osc_sender_panel.dart — テスト用OSC送信パネル（library名方式で state / actions / view を分離）
-│  │        ├─ osc_sender_panel_actions.dart — 送信ON/OFFトグルなどの操作ロジック（MethodChannel連携）
-│  │        ├─ osc_sender_panel_state.dart — 送信ON/OFF状態などの State。本体は mixin に委譲。
-│  │        └─ osc_sender_panel_view.dart — UI構築（InfoCard／スイッチのみのシンプルビュー）
+│  │        ├─ osc_sender_panel.dart — OSC送信パネル
+│  │        ├─ osc_sender_panel_actions.dart — 操作ロジック（送信On/Off, 連続送信切替, レート変更）
+│  │        ├─ osc_sender_panel_state.dart — State（フォーム＋送信設定管理）
+│  │        └─ osc_sender_panel_view.dart — UI構築（フォーム＋送信On/Off）
 │  └─ windows/
 │     ├─ CMakeLists.txt
 │     ├─ flutter/

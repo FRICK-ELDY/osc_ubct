@@ -32,8 +32,8 @@ namespace osc_ubct {
 
   OscUbctPlugin::Method OscUbctPlugin::GetMethodEnum(const std::string& method_name) {
     static const std::unordered_map<std::string, Method> method_map = {
-      {"startSending", Method::kStartSending},
-      {"stopSending", Method::kStopSending},
+      {"osc.startSending", Method::kStartSending},
+      {"osc.stopSending", Method::kStopSending},
     };
     auto it = method_map.find(method_name);
     return it != method_map.end() ? it->second : Method::kUnknown;
