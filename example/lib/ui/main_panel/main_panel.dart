@@ -6,6 +6,7 @@ library ui.main_panel;
 import 'package:flutter/material.dart';
 
 import '../osc_sender_panel/osc_sender_panel.dart';
+import '../osc_message_panel/osc_message_list.dart';
 
 part 'main_panel_state.dart';
 part 'main_panel_actions.dart';
