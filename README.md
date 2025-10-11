@@ -10,6 +10,18 @@ A new Flutter plugin project.
   - [./windows/thirdparty/open_model_zoo](https://github.com/openvinotoolkit/open_model_zoo.git)
 - [WorkspaceLayout.md](./WorkspaceLayout.md)を読んで、階層と役割を理解してください。
 
+#
+| 項目    | 構成                                      |
+| ----- | ----------------------------------------- |
+| カメラ   | 内蔵Webカメラ (640×480〜720p)                   |
+| モデル   | MediaPipe FaceLandmarker + PoseLandmarker |
+| 推論    | OpenVINO Runtime（CPU高速化）                  |
+| 実装言語  | C++（OpenCV連携）                             |
+| 送信先   | OSC経由でResonite                            |
+| 表情出力  | 52 Blendshape Coefficients                |
+| FPS目標 | 30前後（GPU不要）                               |
+
+
 # 
 ```mermaid
 graph LR
